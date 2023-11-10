@@ -4,8 +4,6 @@ from src.Kidney_Disease_Classifier import logger
 from pathlib import Path
 from box import ConfigBox
 from typing import Any
-import joblib
-import json
 import yaml
 import base64
 from ensure import ensure_annotations
@@ -44,3 +42,14 @@ def create_directories(path_to_directory:list, verbose = True):
 
         if verbose:
             logger.info(f"Directory is created for {directory}")
+
+
+@ensure_annotations
+def get_size(path: Path) ->str:
+    """ get size of file
+    ARGS: take path of file if already exist
+    RETURN: return the str after calculating size
+    """
+    size_in_kb = round(os.path.getsize(path)/1024)
+
+    return f"~ {size_in_kb} kb"
