@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Projects/Kidney_Disease_Classification/mlruns/0/b9ac959056c94c8b91df402880d12238/artifacts
+end_time: 1699877810946
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b9ac959056c94c8b91df402880d12238
+run_name: amazing-fox-79
+run_uuid: b9ac959056c94c8b91df402880d12238
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699877810867
+status: 4
+tags: []
+user_id: sai chandra prasad

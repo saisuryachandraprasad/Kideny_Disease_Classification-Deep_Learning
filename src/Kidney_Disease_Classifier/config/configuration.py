@@ -3,7 +3,8 @@ from src.Kidney_Disease_Classifier.constants import *
 from src.Kidney_Disease_Classifier.utils.common import read_yaml, create_directories
 from src.Kidney_Disease_Classifier.entity.config_entity import (DataIngestionConfig,
                                                                 PrepareBaseModelConfig,
-                                                                TrainingConfig)
+                                                                TrainingConfig,
+                                                                EvaluationConfig)
 
 
 
@@ -75,3 +76,17 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+
+
+    def get_evaluation(self) -> EvaluationConfig:
+        evaluation_config = EvaluationConfig(
+            path_of_model = "artifacts/model_trainer/model.h5",
+            training_data ="artifacts/data_ingestion/kidney-ct-scan-image",
+            all_params = self.params,
+            params_batch_size = self.params.BATCH_SIZE,
+            params_image_size = self.params.IMAGE_SIZE,
+            mlflow_uri = "https://dagshub.com/saisuryachandraprasad/Kideny_Disease_Classification-Deep_Learning.mlflow"
+        )
+
+        return evaluation_config

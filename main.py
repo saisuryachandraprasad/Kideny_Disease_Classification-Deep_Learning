@@ -1,6 +1,7 @@
 from src.Kidney_Disease_Classifier.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from src.Kidney_Disease_Classifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from src.Kidney_Disease_Classifier.pipeline.stage_03_model_training import ModelTrainingPipeline
+from src.Kidney_Disease_Classifier.pipeline.stage_04_model_evaluation import ModelEvaluationPipeline
 from src.Kidney_Disease_Classifier.utils.common import logger
 
 
@@ -44,6 +45,24 @@ if __name__ == "__main__":
         model_training.main()
 
         logger.info(f">>>>>>>>>>{STAGE_NAME} is completed <<<<<<<<<</n/n X===================X")
+
+    except Exception as e:
+        logger.info(e)
+        raise e
+    
+
+
+
+STAGE_NAME = "Model Evaluation Stage"
+if __name__ =="__main__":
+    try:
+
+        logger.info(f">>>>>>>>>>{STAGE_NAME} is started ")
+
+        model_evaluation = ModelEvaluationPipeline()
+        model_evaluation.main()
+
+        logger.info(f">>>>>>>>>{STAGE_NAME} is completed <<<<<<<<<< /n/n X==============X")
 
     except Exception as e:
         logger.info(e)

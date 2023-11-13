@@ -6,6 +6,7 @@ from box import ConfigBox
 from typing import Any
 import yaml
 import base64
+import json
 from ensure import ensure_annotations
 
 
@@ -53,3 +54,29 @@ def get_size(path: Path) ->str:
     size_in_kb = round(os.path.getsize(path)/1024)
 
     return f"~ {size_in_kb} kb"
+
+
+@ensure_annotations
+def save_json(path:Path, data:dict):
+    """This method responsible to save in json format
+
+    args: path where to save 
+    data: forrmat data to be saved
+    """
+    with open(path, "w") as path_obj:
+        json.dump(data,path_obj,indent=4)
+
+        logger.info(f"data is saved in {path}")
+
+
+@ensure_annotations
+def load_json(path:Path):
+    """this method is responsible to load from json file
+
+    args: path from where data should be loaded
+    """
+
+    with open(path) as path_obj:
+        content = json.load(path_obj)
+    logger.info(f"data is loaded from {path}")
+    return ConfigBox(content)
